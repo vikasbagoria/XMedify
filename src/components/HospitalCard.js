@@ -42,6 +42,7 @@ const HospitalCard = ({ hospital }) => {
           <h4>Available Slots</h4>
           <div className="slots">
             <p>Today</p>
+            <p>Morning</p>
             <button>11:30 AM</button>
             <p>Afternoon</p>
             <button>12:00 PM</button>

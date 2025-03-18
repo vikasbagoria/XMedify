@@ -55,11 +55,12 @@ const SearchBar = () => {
     <div className="search-container">
       <div className="dropdown-container">
         {/* State Dropdown */}
+        <div id="state">
         <select
-          id="state"
           value={selectedState}
           onChange={(e) => setSelectedState(e.target.value)}
         >
+        
           <option value="">Select State</option>
           {states.map((state) => (
             <option key={state} value={state}>
@@ -67,10 +68,10 @@ const SearchBar = () => {
             </option>
           ))}
         </select>
-
+        </div>
         {/* City Dropdown */}
+        <div id="city">
         <select
-          id="city"
           value={selectedCity}
           onChange={(e) => setSelectedCity(e.target.value)}
           disabled={!selectedState}
@@ -82,7 +83,7 @@ const SearchBar = () => {
             </option>
           ))}
         </select>
-
+        </div>
         {/* Search Button */}
         <button type="submit" className="search-btn" onClick={handleSearch}>
           🔍 Search
