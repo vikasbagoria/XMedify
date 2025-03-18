@@ -10,9 +10,10 @@ function App() {
     <Router>
       <Navbar />      
       <Routes>
-        {/* <Route path="/booking" element={<Home />} /> */}
+        
         <Route path="/search" element={<SearchBar />} />
         <Route path="/my-bookings" element={<MyBookingsPage />} />
+        <Route path="/" element={<SearchBar />} />
       </Routes>
     </Router>
   );
