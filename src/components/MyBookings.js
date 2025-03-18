@@ -4,18 +4,28 @@ const MyBookings = () => {
   const [search, setSearch] = useState("");
   const [bookings, setBookings] = useState([]);
 
-  // Load bookings from localStorage
+  console.log("Component Rendered"); 
   useEffect(() => {
-    const savedBookings = JSON.parse(localStorage.getItem("bookings")) || [];
-    setBookings(savedBookings);
-  }, []);
+    console.log('HI');
+    const savedBookings = localStorage.getItem("bookings");
+    console.log("Raw LocalStorage Data:", savedBookings); // ✅ Log raw data before parsing
+
+    if (savedBookings) {
+      try {
+        const parsedBookings = JSON.parse(savedBookings);
+        console.log("Parsed Bookings:", parsedBookings); // ✅ Log parsed data
+
+        setBookings(parsedBookings); // ✅ Update state
+      } catch (error) {
+        console.error("Error parsing localStorage data:", error);
+      }
+    }
+  }, []); // ✅ No duplicate useEffect
 
   return (
     <div className="my-bookings-container">
-      {/* Header */}
       <h1>My Bookings</h1>
 
-      {/* Search Bar */}
       <div className="search-container">
         <input
           type="text"
@@ -26,25 +36,16 @@ const MyBookings = () => {
         <button type="submit">Search</button>
       </div>
 
-      {/* Bookings List */}
       <div className="bookings-list">
         {bookings.length === 0 ? (
           <p>No bookings available.</p>
         ) : (
           bookings.map((booking, index) => (
             <div key={index} className="booking-card">
-              <h3>{booking.hospitalName}</h3>
-              <p>{booking.city}, {booking.state}</p>
-              <p>{booking.hospitalType}</p>
-
-              {/* Time Slots */}
-              <div className="time-slots">
-                <p>Today</p>
-                <p>Morning | Afternoon | Evening</p>
-              </div>
-
-              {/* Book Button */}
-              <button className="book-btn">Book FREE Center Visit</button>
+              <h3>{booking["Hospital Name"]}</h3>
+              <p>{booking.City}, {booking.State}</p>
+              <p><strong>Date:</strong> {booking.bookingDate}</p>
+              <p><strong>Time:</strong> {booking.bookingTime}</p>
             </div>
           ))
         )}

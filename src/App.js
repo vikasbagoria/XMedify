@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 // import SearchResults from "./pages/SearchResults";
-import MyBookingsPage from "./pages/MyBookingPage";
+import MyBookings from "./components/MyBookings";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         
         <Route path="/search" element={<SearchBar />} />
-        <Route path="/my-bookings" element={<MyBookingsPage />} />
+        <Route path="/my-bookings" element={<MyBookings />} />
         <Route path="/" element={<SearchBar />} />
       </Routes>
     </Router>

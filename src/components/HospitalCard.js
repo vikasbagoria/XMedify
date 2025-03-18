@@ -1,8 +1,29 @@
-import React,{useState} from "react";
-import './HospitalCard.css';
+import React, { useState } from "react";
+import "./HospitalCard.css";
 
 const HospitalCard = ({ hospital }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleBooking = () => {
+    const newBooking = {
+      "Hospital Name": hospital["Hospital Name"],
+      "City": hospital.City,
+      "State": hospital.State,
+      "Hospital Type": hospital["Hospital Type"],
+      "Hospital overall rating": hospital["Hospital overall rating"],
+      bookingDate: "2024-12-15", // Placeholder for now
+      bookingTime: "10:00 AM",
+    };
+
+    // Get existing bookings
+    const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+    // Save new booking
+    localStorage.setItem("bookings", JSON.stringify([...existingBookings, newBooking]));
+
+    setIsOpen(!isOpen); // Open the accordion
+  };
+
   return (
     <div className="hospital-card">
       {/* Hospital Icon */}
@@ -33,9 +54,10 @@ const HospitalCard = ({ hospital }) => {
 
       {/* Booking Button & Likes */}
       <div className="action-section">
-        <button className="book-button" onClick={() => setIsOpen(!isOpen)}>Book FREE Center Visit</button>
+        <button className="book-button" onClick={handleBooking}>Book FREE Center Visit</button>
         <div className="likes">👍 5</div>
       </div>
+
       {/* Accordion Section */}
       {isOpen && (
         <div className="accordion">

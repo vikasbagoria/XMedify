@@ -86,10 +86,13 @@ const SearchBar = () => {
         </div>
         {/* Search Button */}
         <button type="submit" className="search-btn" onClick={handleSearch}>
-          🔍 Search
+        Search
         </button>        
       </div>      
     </div>
+    {hospitals.length > 0 && (
+  <h1>{hospitals.length} medical centers available in {selectedCity.toLowerCase()}</h1>
+)}
     <HospitalsList hospitals={hospitals} />
     </>
   );
