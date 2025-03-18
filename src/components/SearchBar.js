@@ -8,7 +8,9 @@ const SearchBar = () => {
   const [cities, setCities] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
-  const [hospitals,setHospitals] = useState([]);
+  const [hospitals, setHospitals] = useState([]);
+  const [stateDropdownOpen, setStateDropdownOpen] = useState(false);
+  const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
 
   // Fetch States
   useEffect(() => {
@@ -52,46 +54,48 @@ const SearchBar = () => {
 
   return (
     <>
-    <div className="search-container">
-      <div className="dropdown-container">
-        {/* State Dropdown */}
-        <div id="state">
-        <select
-          value={selectedState}
-          onChange={(e) => setSelectedState(e.target.value)}
-        >
-        
-          <option value="">Select State</option>
-          {states.map((state) => (
-            <option key={state} value={state}>
-              {state}
-            </option>
-          ))}
-        </select>
+      <div className="search-container">
+        <div className="dropdown-container">
+          {/* State Dropdown */}
+          <div id="state" className="dropdown" onClick={() => setStateDropdownOpen(!stateDropdownOpen)}>
+            {selectedState || "Select State"}
+            {stateDropdownOpen && (
+              <ul className="dropdown-menu">
+                {states.map((state) => (
+                  <li key={state} onClick={() => { setSelectedState(state); setStateDropdownOpen(false); }}>
+                    {state}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* City Dropdown */}
+          <div id="city" className="dropdown" onClick={() => setCityDropdownOpen(!cityDropdownOpen)}>
+            {selectedCity || "Select City"}
+            {cityDropdownOpen && (
+              <ul className="dropdown-menu">
+                {cities.map((city) => (
+                  <li key={city} onClick={() => { setSelectedCity(city); setCityDropdownOpen(false); }}>
+                    {city}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Search Button */}
+          <button type="submit" className="search-btn" onClick={handleSearch}>
+            Search
+          </button>
         </div>
-        {/* City Dropdown */}
-        <div id="city">
-        <select
-          value={selectedCity}
-          onChange={(e) => setSelectedCity(e.target.value)}
-          disabled={!selectedState}
-        >
-          <option value="">Select City</option>
-          {cities.map((city) => (
-            <option key={city} value={city}>
-              {city}
-            </option>
-          ))}
-        </select>
-        </div>
-        {/* Search Button */}
-        <button type="submit" className="search-btn" onClick={handleSearch}>Search</button>        
-      </div>      
-    </div>
-          {hospitals.length > 0 && (
-  <h1>{hospitals.length} medical centers available in {selectedCity.toLowerCase()}</h1>
-)}
-    <HospitalsList hospitals={hospitals} />
+      </div>
+
+      {hospitals.length > 0 && (
+        <h1>{hospitals.length} medical centers available in {selectedCity.toLowerCase()}</h1>
+      )}
+
+      <HospitalsList hospitals={hospitals} />
     </>
   );
 };
