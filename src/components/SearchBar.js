@@ -85,9 +85,7 @@ const SearchBar = () => {
         </select>
         </div>
         {/* Search Button */}
-        <button type="submit" className="search-btn" onClick={handleSearch}>
-          🔍 Search
-        </button>        
+        <button type="submit" className="search-btn" onClick={handleSearch}>Search</button>        
       </div>      
     </div>
     <HospitalsList hospitals={hospitals} />
