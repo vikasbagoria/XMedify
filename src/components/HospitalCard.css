@@ -1,0 +1,106 @@
+.hospital-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    gap: 20px;
+  }
+  
+  .hospital-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #e3f2fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hospital-icon img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .hospital-details {
+    flex-grow: 1;
+  }
+  
+  .hospital-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin: 0;
+  }
+  
+  .location {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .specialty {
+    font-size: 13px;
+    color: gray;
+  }
+  
+  .consultation-fee {
+    margin-top: 5px;
+  }
+  
+  .free {
+    color: green;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: gray;
+    margin-left: 5px;
+    font-size: 13px;
+  }
+  
+  .fee-text {
+    font-size: 13px;
+    color: gray;
+    margin-left: 5px;
+  }
+  
+  .availability {
+    color: green;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .action-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .book-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .book-button:hover {
+    background: #0056b3;
+  }
+  
+  .likes {
+    background: #e3fcef;
+    color: green;
+    padding: 4px 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  
